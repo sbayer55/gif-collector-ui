@@ -1,0 +1,6 @@
+.gif-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.inline-gif {
+}
