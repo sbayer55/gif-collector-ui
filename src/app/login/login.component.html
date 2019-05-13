@@ -1,0 +1,21 @@
+<p>
+  <mat-form-field>
+    <label>
+      <input #username matInput placeholder="Username" value="steven">
+    </label>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field>
+    <label>
+      <input #password matInput placeholder="Enter your password"
+             value="password"
+             type="password"
+             (keyup.enter)="login(username.value, password.value)">
+    </label>
+  </mat-form-field>
+</p>
+
+<button mat-flat-button color="primary" (click)="login(username.value, password.value)">
+  Login
+</button>

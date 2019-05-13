@@ -1,16 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>Gifalicious, definition, make them boys go crazy</h1>
+<!--  <h1>Gifalicious, definition, make them boys go crazy</h1>-->
+  <h1>Spring Security</h1>
 </div>
-<div>
-  <label>
-    Search
-    <input (keyup)="onKey($event)">
-  </label>
-  <div>Search for "{{searchText}}"</div>
-</div>
-<div class="gif-container">
-  <div *ngFor="let gif of gifs">
-    <div class="inline-gif" [style.background-image]='styleSanitizeUrl(gif.url)' [style.width.px]='gif.width' [style.height.px]='gif.height'></div>
-  </div>
-</div>
+<router-outlet></router-outlet>
+

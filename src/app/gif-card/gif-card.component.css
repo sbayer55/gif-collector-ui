@@ -1,0 +1,15 @@
+.gif-card {
+  margin: 8px 16px;
+}
+
+.gif-header-image {
+  background-size: cover;
+}
+
+.gif-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: auto;
+}
