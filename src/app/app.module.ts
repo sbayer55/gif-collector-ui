@@ -10,19 +10,22 @@ import {GifCardComponent} from './gif-card/gif-card.component';
 import {LoginComponent} from './login/login.component';
 import {RouterModule, Routes} from '@angular/router';
 import {SearchComponent} from './search/search.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'profile', component: ProfileComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'}
-]
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     GifCardComponent,
     LoginComponent,
-    SearchComponent
+    SearchComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

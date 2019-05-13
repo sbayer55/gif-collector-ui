@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Gif} from './gif';
 import {DomSanitizer} from '@angular/platform-browser';
+import {GifCardService} from './gif-card.service';
 
 @Component({
   selector: 'app-gif-card',
@@ -12,7 +13,7 @@ export class GifCardComponent implements OnInit {
   private mGif: Gif;
   private titleFormatted;
 
-  constructor(private domSanitizer: DomSanitizer) { }
+  constructor(private domSanitizer: DomSanitizer, private gifCardService: GifCardService) { }
 
   ngOnInit() {
   }
@@ -27,7 +28,16 @@ export class GifCardComponent implements OnInit {
     }
   }
 
+  private save() {
+    this.gifCardService.saveGif(this.mGif);
+  }
+
   private styleSanitizeUrl(url: string) {
     return this.domSanitizer.bypassSecurityTrustStyle('url(' + url + ')');
+  }
+
+  private tag(value: string) {
+    console.log("Tagging ", value);
+    this.gifCardService.tag(value, this.mGif.id);
   }
 }

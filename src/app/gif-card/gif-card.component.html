@@ -11,8 +11,16 @@
     <p>Fixed Height Dimensions: {{mGif.fixedHeight.width}}x{{mGif.fixedHeight.height}}</p>
     <p>Original Dimensions: {{mGif.original.width}}x{{mGif.original.height}}</p>
   </mat-card-content>
+  <mat-card-actions *ngIf="mGif.id">
+    <mat-form-field>
+      <label>
+        <input #tagValue matInput placeholder="Tag"
+               (keyup.enter)="tag(tagValue.value)">
+      </label>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="tag(tagValue.value)">Tag</button>
+  </mat-card-actions>
   <mat-card-actions>
-    <button mat-button>Action</button>
-    <button mat-button>Action</button>
+    <button mat-button (click)="save()">Favorite</button>
   </mat-card-actions>
 </mat-card>
