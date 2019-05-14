@@ -1,6 +1,10 @@
 # GifCollectorUi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+To install dependencies before running Angular application first run:
+```
+npm install
+```
 
 ## Development server
 
@@ -25,3 +29,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## To run API locally
+```
+git clone https://github.com/sbayer55/gif-collector.git
+env "giphy.apiToken"="SICyE6VbRPukd12rrIwbdC2QmwNjSBYH" bash
+./mvnw clean install
+./mvnw spring-boot:run
+
+# default username: steven
+# default password: password
+```
