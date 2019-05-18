@@ -16,7 +16,7 @@ export class AuthenticationService {
     headers = headers.append('Authorization', 'Basic ' + btoa(username + ':' + password));
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.http.get(`http://localhost:8080/auth`, {headers})
+    return this.http.get(`http://localhost:8080/api/user`, {headers})
       .toPromise()
       .then(response => {
         this.headers = headers;
