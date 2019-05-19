@@ -37,7 +37,7 @@ export class GifCardComponent implements OnInit {
   }
 
   private tag(value: string) {
-    console.log("Tagging ", value);
-    this.gifCardService.tag(value, this.mGif.id);
+    console.log('Tagging ', value);
+    this.gifCardService.tag(value, this.mGif.gifId);
   }
 }

@@ -5,7 +5,7 @@ export interface Image {
 }
 
 export interface Gif {
-  id?: number;
+  gifId?: number;
   importDatetime: string;
   trendingDatetime: string;
   title: string;
