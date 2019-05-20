@@ -2,22 +2,23 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatPaginatorModule} from '@angular/material';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule, MatIconModule,
+  MatInputModule, MatListModule,
+  MatPaginatorModule, MatSidenavModule, MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GifCardComponent} from './gif-card/gif-card.component';
 import {LoginComponent} from './login/login.component';
-import {RouterModule, Routes} from '@angular/router';
 import {SearchComponent} from './search/search.component';
-import { ProfileComponent } from './profile/profile.component';
+import {ProfileComponent} from './profile/profile.component';
+import {BasicAuthInterceptor} from './auth/basic-auth.interceptor';
+import {routing} from './app.routing';
 
-const appRoutes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'search', component: SearchComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'}
-];
 
 @NgModule({
   declarations: [
@@ -38,11 +39,17 @@ const appRoutes: Routes = [
     MatCardModule,
     MatButtonModule,
     MatPaginatorModule,
-    RouterModule.forRoot(appRoutes)
+    routing,
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule
   ],
   exports: [
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
