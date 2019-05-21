@@ -1,7 +1,7 @@
 <p>
   <mat-form-field>
     <label>
-      <input #username matInput placeholder="Username" value="steven">
+      <input #username matInput placeholder="Username">
     </label>
   </mat-form-field>
 </p>
@@ -9,7 +9,6 @@
   <mat-form-field>
     <label>
       <input #password matInput placeholder="Enter your password"
-             value="password"
              type="password"
              (keyup.enter)="login(username.value, password.value)">
     </label>
