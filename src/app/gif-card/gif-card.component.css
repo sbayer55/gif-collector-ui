@@ -13,3 +13,12 @@
   height: 200px;
   width: auto;
 }
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-form mat-chip-list {
+  margin-top: 1.25em;
+}

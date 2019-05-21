@@ -1,7 +1,7 @@
 <p>
   <mat-form-field>
     <label>
-      <input #username matInput placeholder="Username" value="steven">
+      <input #username matInput placeholder="Username">
     </label>
   </mat-form-field>
 </p>
@@ -9,13 +9,36 @@
   <mat-form-field>
     <label>
       <input #password matInput placeholder="Enter your password"
-             value="password"
              type="password"
              (keyup.enter)="login(username.value, password.value)">
     </label>
   </mat-form-field>
 </p>
 
-<button mat-flat-button color="primary" (click)="login(username.value, password.value)">
-  Login
-</button>
+<p>
+  <button mat-flat-button color="primary" (click)="login(username.value, password.value)">
+    Login
+  </button>
+</p>
+
+<p>
+  <mat-form-field>
+    <label>
+      <input #firstName matInput placeholder="First Name">
+    </label>
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field>
+    <label>
+      <input #lastName matInput placeholder="Last Name">
+    </label>
+  </mat-form-field>
+</p>
+
+<p>
+  <button mat-flat-button (click)="register(username.value, password.value, firstName.value, lastName.value)">
+    Register
+  </button>
+</p>

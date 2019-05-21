@@ -29,7 +29,6 @@ export class SearchComponent implements OnInit {
     }
 
     this.gifService.findGif(this.searchText, pageSize, offset).subscribe(response => {
-      console.log(response);
       this.gifs = response.gifs;
       this.searchResponse = response;
     }, err => {

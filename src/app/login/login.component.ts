@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../authentication-service';
+import {BasicAuthService} from '../auth/basic-auth.service';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -9,16 +10,20 @@ import {AuthenticationService} from '../authentication-service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private authService: BasicAuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
   public login(username: string, password: string) {
-    console.log('username', username);
-    console.log('password', password);
-    this.authenticationService.login(username, password).then(() => {
-      this.router.navigate(['/', 'search']);
-    });
+    this.authService.login(username, password)
+      .pipe(first())
+      .subscribe(user => { this.router.navigate(['/search']); });
+  }
+
+  public register(username: string, password: string, firstName: string, lastName: string) {
+    this.authService.register({username, password, firstName, lastName})
+      .pipe(first())
+      .subscribe(user => { this.router.navigate(['/search']); });
   }
 }

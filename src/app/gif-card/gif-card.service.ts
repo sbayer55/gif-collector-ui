@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {AuthenticationService} from '../authentication-service';
 import {Gif} from './gif';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,44 +9,19 @@ import {Gif} from './gif';
 export class GifCardService {
   private static readonly API_URL = 'http://localhost:8080/api/gif';
 
-  constructor(private http: HttpClient, private authenticationService: AuthenticationService) { }
+  constructor(private http: HttpClient) { }
 
-  public saveGif(gif: Gif): Promise<any> {
-    const httpOptions = {
-      headers: this.authenticationService.getHeaders()
-    };
-
-    console.log('saveGif Headers!', httpOptions.headers);
-
-    return this.http.put(GifCardService.API_URL, gif, httpOptions).toPromise();
+  public saveGif(gif: Gif): Observable<any> {
+    return this.http.put(GifCardService.API_URL, gif);
   }
 
-  public getAll(): Promise<Gif[]> {
-    const httpOptions = {
-      headers: this.authenticationService.getHeaders()
-    };
-
-    console.log('getAll Headers!', httpOptions.headers);
-
-    return this.http.get<Gif[]>(GifCardService.API_URL, httpOptions).toPromise()
-      .then(gifs => {
-        console.log('gifs: ', gifs);
-        return gifs;
-      });
+  public getAll(): Observable<Gif[]> {
+    return this.http.get<Gif[]>(GifCardService.API_URL);
   }
 
 
   public tag(value: string, id: number) {
-    const httpOptions = {
-      headers: this.authenticationService.getHeaders()
-    };
     const tagRequest = { gifId: id, name: value };
-
-    console.log('tag Headers!', httpOptions.headers);
-
-    return this.http.put<Gif[]>(GifCardService.API_URL + '/tag', tagRequest, httpOptions).toPromise()
-      .then(() => {
-        console.log('Tag successful');
-      });
+    return this.http.put<Gif[]>(GifCardService.API_URL + '/tag', tagRequest);
   }
 }

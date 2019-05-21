@@ -4,8 +4,13 @@ export interface Image {
   url: string;
 }
 
+export interface Tag {
+  tagId?: number;
+  name: string;
+}
+
 export interface Gif {
-  id?: number;
+  gifId?: number;
   importDatetime: string;
   trendingDatetime: string;
   title: string;
@@ -14,6 +19,7 @@ export interface Gif {
   fixedWidth: Image;
   fixedWidthSmallStill: Image;
   original: Image;
+  tags: Tag[];
 }
 
 export interface GifSearchResponse {

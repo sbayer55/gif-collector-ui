@@ -12,6 +12,8 @@ export class GifCardComponent implements OnInit {
   private static readonly MAX_TITLE_LENGTH = 20;
   private mGif: Gif;
   private titleFormatted;
+  private isFavorite = false;
+  private favoriteButtonText = 'Favorite';
 
   constructor(private domSanitizer: DomSanitizer, private gifCardService: GifCardService) { }
 
@@ -26,10 +28,15 @@ export class GifCardComponent implements OnInit {
     } else {
       this.titleFormatted = this.mGif.title;
     }
+    console.log(gif);
   }
 
   private save() {
-    this.gifCardService.saveGif(this.mGif);
+    this.gifCardService.saveGif(this.mGif).subscribe(
+      () => {
+        this.isFavorite = true;
+        this.favoriteButtonText = 'Saved';
+      });
   }
 
   private styleSanitizeUrl(url: string) {
@@ -37,7 +44,8 @@ export class GifCardComponent implements OnInit {
   }
 
   private tag(value: string) {
-    console.log("Tagging ", value);
-    this.gifCardService.tag(value, this.mGif.id);
+    this.gifCardService.tag(value, this.mGif.gifId).subscribe(() => {
+      this.mGif.tags.push({name: value});
+    });
   }
 }
