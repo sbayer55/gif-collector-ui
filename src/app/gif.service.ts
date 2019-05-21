@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Gif, GifSearchResponse} from './gif-card/gif';
+import {GifSearchResponse} from './gif-card/gif';
 import {Observable} from 'rxjs';
-import {AuthenticationService} from './authentication-service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class GifService {
   private static readonly SEARCH_API_URL = 'http://localhost:8080/api/gif-search';
   private static readonly PAGE_SIZE = 25;
 
-  constructor(private http: HttpClient, private authenticationService: AuthenticationService) { }
+  constructor(private http: HttpClient) { }
 
   public findGif(searchText: string, limit?: number, offset?: number): Observable<GifSearchResponse> {
     let params = new HttpParams();
@@ -26,10 +25,7 @@ export class GifService {
       params = params.append('limit', String(limit));
     }
 
-    const httpOptions = {
-      headers: this.authenticationService.getHeaders(),
-      params
-    };
+    const httpOptions = { params };
 
     return this.http.get<GifSearchResponse>(GifService.SEARCH_API_URL, httpOptions);
   }

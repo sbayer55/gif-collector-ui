@@ -13,7 +13,8 @@ export class ProfileComponent implements OnInit {
   constructor(private gifCardService: GifCardService) { }
 
   ngOnInit() {
-    this.gifCardService.getAll().then(gifs => this.gifs = gifs);
+    this.gifCardService.getAll()
+      .subscribe(gifs => this.gifs = gifs);
   }
 
 }

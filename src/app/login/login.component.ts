@@ -16,9 +16,13 @@ export class LoginComponent implements OnInit {
   }
 
   public login(username: string, password: string) {
-    console.log('username', username);
-    console.log('password', password);
     this.authService.login(username, password)
+      .pipe(first())
+      .subscribe(user => { this.router.navigate(['/search']); });
+  }
+
+  public register(username: string, password: string, firstName: string, lastName: string) {
+    this.authService.register({username, password, firstName, lastName})
       .pipe(first())
       .subscribe(user => { this.router.navigate(['/search']); });
   }

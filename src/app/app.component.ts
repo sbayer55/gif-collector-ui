@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {BasicAuthService} from './auth/basic-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,11 @@ export class AppComponent implements OnInit {
     {text: 'My Profile', route: '/profile'},
   ];
 
-  constructor() {
+  constructor(private authService: BasicAuthService) {
+  }
+
+  private logout() {
+    this.authService.logout();
   }
 
   ngOnInit(): void {

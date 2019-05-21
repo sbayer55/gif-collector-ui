@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatChipsModule,
   MatFormFieldModule, MatIconModule,
   MatInputModule, MatListModule,
   MatPaginatorModule, MatSidenavModule, MatToolbarModule
@@ -43,7 +43,8 @@ import {routing} from './app.routing';
     MatSidenavModule,
     MatIconModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatChipsModule
   ],
   exports: [
   ],
