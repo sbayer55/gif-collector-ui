@@ -48,7 +48,7 @@ import {routing} from './app.routing';
   exports: [
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor}
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
